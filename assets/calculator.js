@@ -11,6 +11,7 @@ $(document).ready(function() {
       var numOneArr = [];
       var numTwoArr = [];
       var operatorArr = [];
+      var resultsArr = [];
     
      function isEmpty( el ){
           return !$.trim(el.html())
@@ -186,5 +187,199 @@ $(document).ready(function() {
     
       
     })
+
+    //Operators --------------------------------------------------------------
+
+$("#button-plus").on("click", function(){
+    var plus = "+";
+  
+    
+  if(operatorArr.length >= 1){
+    return;
+  }
+   if(isEmpty(firstNum)){
+    return;
+   } else {
+     operatorArr.push(plus);
+     operator.append(plus);
+   }
+  
+    
+  })
+  
+  $("#button-minus").on("click", function(){
+    var minus = "-";
+  
+    if(operatorArr.length >= 1){
+    return;
+  }
+  
+    if(isEmpty(firstNum)){
+    return;
+   } else {
+    operatorArr.push(minus);
+     operator.append(minus);
+   }
+  
+    
+  })
+  
+  $("#button-multiply").on("click", function(){
+    var multiply = "x";
+  
+    if(operatorArr.length >= 1){
+    return;
+  }
+  
+    if(isEmpty(firstNum)){
+    return;
+   } else {
+    operatorArr.push(multiply);
+     operator.append(multiply);
+   }
+  
+    
+  })
+  
+  $("#button-divide").on("click", function(){
+    var divide = "%";
+  
+    if(operatorArr.length >= 1){
+    return;
+  }
+  
+  if(isEmpty(firstNum)){
+    return;
+   } else {
+    operatorArr.push(divide);
+     operator.append(divide);
+   }
+  
+    
+  })
+  
+  $("#button-power").on("click", function(){
+    var power = "^";
+  
+    if(operatorArr.length >= 1){
+    return;
+  }
+  
+   if(isEmpty(firstNum)){
+    return;
+   } else {
+    operatorArr.push(power);
+     operator.append(power);
+   }
+  
+    
+  })
+  
+  $("#button-equal").on("click", function(){
+    var result = 0;
+  
+    
+     var sum1 = numOneArr.join('');
+     var sum2 = numTwoArr.join('');
+  
+     var numSum1 = parseInt(sum1);
+     var numSum2 = parseInt(sum2);
+  
+  
+  
+  console.log("-------------------");
+  
+  console.log(operatorArr);
+  
+  console.log("--------------------");
+  
+  // Results for addition ---------------------------------------------
+  if(resultsArr.length >= 1){
+    return;
+  }
+  if (operatorArr[0] === "+"){
+    resultsArr.push(result);
+    result = numSum1+numSum2;
+  
+  
+    total.append("= " + result);
+  
+    
+  
+  // Results for subtraction --------------------------------------------- 
+  }
+  
+  else if (operatorArr[0] === "-"){
+    resultsArr.push(result);
+    result = numSum1-numSum2;
+  
+  
+    total.append("= " + result);
+  
+    
+  }
+  
+  // Results for multiplication  ---------------------------------------------
+  
+  else if (operatorArr[0] === "x"){
+    resultsArr.push(result);
+    result = numSum1*numSum2;
+  
+  
+    total.append("= " + result);
+  
+    
+  }
+  
+  // Results for division ---------------------------------------------
+  
+  else if (operatorArr[0] === "%"){
+    resultsArr.push(result);
+    result = numSum1/numSum2;
+  
+  
+    total.append("= " + result);
+  
+    
+  }
+  
+  // Results for power ---------------------------------------------
+  
+  else if (operatorArr[0] === "^"){
+    resultsArr.push(result);
+    result = numSum1**numSum2;
+  
+  
+    total.append("= " + result);
+  
+    
+  }
+    
+  
+    console.log(sum1);
+    console.log(sum2);
+    console.log(result);
+  
+  
+  
+    
+  })
+  
+  
+  $("#button-clear").on("click", function(){
+    
+  // Empty div's -------------------------------------------
+    firstNum.empty();
+    operator.empty();
+    secondNum.empty();
+    total.empty();
+  // Empty array's -------------------------------------
+    numOneArr = [];
+    numTwoArr = [];
+    operatorArr = [];
+    resultsArr = [];
+  
+    
+  })
 
 });
